@@ -339,3 +339,6 @@ textarea.field__control:focus { padding: 13px 15px; }
 .progress { display: flex; gap: 6px; }
 .progress__seg { flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
 .progress__seg.is-on { background: var(--mint-600); }
+
+/* a 태그로 쓴 버튼 */
+a.btn { text-decoration: none; }

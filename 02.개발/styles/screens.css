@@ -1,0 +1,160 @@
+/* T-Ting 화면 공통 레이아웃 — 화면 프레임 · 상단 바 · 본문 · 섹션 · 리스트
+   문서: t-ting-디자인-시스템-v1-crayon.md §5 / 화면별 구조: t-ting-화면-명세-*.md
+   Figma의 Status bar(54) · Home indicator(34)는 기기 영역이라 safe-area 여백으로 대신함 */
+
+body.app { background: var(--sunken); }
+
+.screen {
+  position: relative;
+  display: flex; flex-direction: column;
+  width: 100%; max-width: var(--screen-w); min-height: 100dvh; margin: 0 auto;
+  background: var(--paper);
+  padding-top: env(safe-area-inset-top);
+}
+
+/* 탭 루트 화면 상단: 로고 + 알림 벨 */
+.topbar {
+  display: flex; align-items: center; gap: 4px; height: 60px; padding: 0 6px 0 20px; flex: none;
+  background: var(--surface);
+}
+.topbar__spacer { flex: 1; }
+.logo {
+  display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px;
+  border-radius: 3.2px; background: #1B1B1B; color: #14B8A6; /* 로고는 테마와 무관하게 고정색 */
+  font-size: 11px; font-weight: 700; line-height: 1; text-decoration: none;
+}
+
+/* 하위 화면 상단: 뒤로 + 제목 */
+.topnav {
+  display: flex; align-items: center; gap: 2px; height: var(--topnav-h); padding: 0 20px 0 6px; flex: none;
+  background: var(--surface);
+}
+.topnav__title { flex: 1; font-size: 16px; line-height: 1.3; font-weight: 500; }
+
+.body { flex: 1; display: flex; flex-direction: column; gap: 24px; padding: 8px 20px 24px; }
+
+.screen > .tabbar {
+  position: sticky; bottom: 0; flex: none; z-index: 5;
+  padding-bottom: calc(2px + env(safe-area-inset-bottom));
+}
+
+/* 섹션 머리: 제목 (+ 개수) + 오른쪽 링크 */
+.sec { display: flex; flex-direction: column; gap: 12px; }
+.sec__head { display: flex; align-items: center; gap: 6px; }
+.sec__title { font-size: 16px; line-height: 1.3; font-weight: 500; }
+.sec__count { font-size: 16px; line-height: 1.3; font-weight: 500; color: var(--mint-700); }
+.sec__more {
+  margin-left: auto; padding: 12px 0; margin-block: -12px; /* 탭 영역 확보 */
+  font-size: 12px; line-height: 1.3; color: var(--ink-700); text-decoration: none; background: none; border: 0;
+}
+
+/* 리스트 카드: 행 + 구분선 */
+.list { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; }
+.list__row {
+  display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 16px;
+  background: none; border: 0; text-align: left; color: inherit; text-decoration: none;
+}
+.list__row + .list__row { border-top: 1px solid var(--line); }
+a.list__row:active, button.list__row:active { background: var(--sunken); }
+.list__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.list__title { font-size: 16px; line-height: 1.3; font-weight: 500; color: var(--ink-900); }
+.list__sub { font-size: 12px; line-height: 1.3; color: var(--ink-400); }
+.list__action { font-size: 14px; line-height: 1.4; font-weight: 500; color: var(--mint-700); white-space: nowrap; }
+
+/* 숫자 · 아이콘 네모 (확인할 일) */
+.num-box {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 32px; height: 32px; border-radius: 10px; background: var(--sunken);
+  font-size: 12px; font-weight: 500; color: var(--ink-700);
+}
+
+/* 번호 원 (단계 · 순서) */
+.step-no {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--sunken); color: var(--ink-700); font-size: 12px; font-weight: 500;
+}
+.step-no.is-done { background: var(--mint-500); color: var(--on-primary); }
+.step-no.is-current { background: var(--surface); border: 2px solid var(--mint-600); color: var(--mint-700); }
+
+/* 여행 머리 (이름 + 날짜 + D-day) */
+.trip-head { display: flex; flex-direction: column; gap: 12px; }
+.trip-head__title { display: flex; align-items: center; gap: 8px; }
+.trip-head__t { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.trip-head__name { font-size: 20px; line-height: 1.3; font-weight: 700; }
+.trip-head__dday { font-size: 20px; line-height: 1.3; font-weight: 700; color: var(--mint-700); }
+
+/* 진행 게이지 */
+.gauge { height: 8px; border-radius: 4px; background: var(--mint-glow); overflow: hidden; }
+.gauge__fill { display: block; height: 100%; border-radius: 4px; background: var(--mint-600); }
+
+/* 통계 3칸 */
+.stats { display: flex; padding: 14px 16px; }
+.stats__item { flex: 1; display: flex; flex-direction: column; gap: 2px; align-items: center; }
+.stats__item + .stats__item { border-left: 1px solid var(--line); }
+.stats__value { font-size: 20px; line-height: 1.3; font-weight: 700; }
+
+/* ── 여행 모드 (K2): 지도 전체 + 떠 있는 카드 + 바텀시트 ── */
+.screen--map { height: 100dvh; overflow: hidden; }
+.map {
+  position: absolute; inset: 0; overflow: hidden;
+  /* 지도 SDK 연결 전 자리 표시 */
+  background:
+    linear-gradient(115deg, transparent 46%, var(--surface) 46%, var(--surface) 49%, transparent 49%),
+    linear-gradient(25deg, transparent 58%, var(--surface) 58%, var(--surface) 60.5%, transparent 60.5%),
+    linear-gradient(160deg, transparent 30%, var(--surface) 30%, var(--surface) 32%, transparent 32%),
+    var(--sunken);
+}
+.map__route { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map__marker { position: absolute; transform: translate(-50%, -50%); }
+.map__me {
+  position: absolute; width: 16px; height: 16px; border-radius: 50%; transform: translate(-50%, -50%);
+  background: var(--mint-700); box-shadow: 0 0 0 3px #FFFFFF;
+}
+.map__next {
+  position: absolute; transform: translate(-50%, -50%);
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px 6px 8px;
+  background: var(--surface); border: 2px solid var(--mint-600); border-radius: var(--radius-pill);
+  font-size: 12px; line-height: 1.3; font-weight: 500; white-space: nowrap;
+}
+.map__next::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--mint-600); }
+.map__note {
+  position: absolute; left: 50%; top: 45%; transform: translateX(-50%);
+  padding: 2px 6px; border-radius: 6px; background: color-mix(in srgb, var(--surface) 85%, transparent);
+  font-size: 11px; color: var(--ink-500); white-space: nowrap;
+}
+
+.overlay-card {
+  position: relative; z-index: 2; margin: 6px 16px 0; padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card);
+}
+.overlay-card__trip { display: flex; align-items: center; gap: 8px; }
+
+.screen--map .sheet {
+  position: relative; z-index: 2; margin-top: auto; gap: 14px; align-items: stretch;
+  padding: 10px 20px 18px; border: 1px solid var(--line); border-bottom: 0;
+}
+.screen--map > .tabbar { position: relative; z-index: 2; }
+.sheet__next { display: flex; flex-direction: column; gap: 4px; color: inherit; text-decoration: none; }
+.sheet__actions { display: flex; gap: 8px; }
+.sheet__rows { display: flex; flex-direction: column; gap: 10px; }
+.sheet__row { display: flex; align-items: center; gap: 12px; min-height: 24px; }
+.sheet__row .time { width: 40px; flex: none; font-size: 14px; color: var(--ink-700); }
+.sheet__row .name { flex: 1; font-size: 16px; line-height: 1.3; }
+.sheet__trip-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* 여행 마무리 단계 (K3) */
+.steps { display: flex; flex-direction: column; }
+.steps__head { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px 8px; }
+.steps__row { display: flex; align-items: center; gap: 12px; padding: 12px 20px; }
+
+.recap__cover {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  height: 112px; background: var(--mint-tint-2);
+}
+.recap__cover .avatar { width: 40px; height: 40px; font-size: 14px; }
+.recap__cover .avatars .avatar + .avatar { margin-left: -10px; box-shadow: 0 0 0 3px var(--mint-tint-2); }
+
+/* 화면 목록 (screens/index.html) */
+.screen-index { max-width: 640px; margin: 0 auto; padding: 24px 16px 64px; display: grid; gap: 20px; }

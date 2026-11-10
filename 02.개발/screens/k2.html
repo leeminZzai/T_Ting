@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>메인 · 여행 중 · T-Ting</title>
+  <script src="../scripts/theme.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/screens.css">
+</head>
+<body class="app">
+<!-- K2 · 메인 · 여행 중 (여행 모드) — Figma 101:28797
+     지도는 SDK 연결 전 자리 표시. 마커 · 경로 위치는 예시 -->
+<div class="screen screen--map">
+  <div class="map" role="img" aria-label="지도: 내 위치, 일행 3명의 위치, 다음 일정 18:00 시부야 스크램블">
+    <svg class="map__route" viewBox="0 0 393 852" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M90 440 C 130 420, 160 400, 183 348" fill="none" stroke="var(--mint-600)" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <span class="map__me" style="left:46.5%;top:40.8%"></span>
+    <span class="map__marker avatar t-initial" style="left:42%;top:37%;box-shadow:0 0 0 3px #fff">이</span>
+    <span class="map__marker avatar t-initial" style="left:61%;top:31%;box-shadow:0 0 0 3px #fff;background:var(--mint-tint)">강</span>
+    <span class="map__marker avatar avatar--guest t-initial" style="left:80%;top:21.5%;border:0;box-shadow:0 0 0 3px #fff">최</span>
+    <span class="map__next" style="left:69%;top:26.7%">18:00 시부야 스크램블</span>
+    <span class="map__note">지도 연결 전 자리 표시</span>
+  </div>
+
+  <section class="overlay-card" aria-label="진행 중인 여행">
+    <div class="overlay-card__trip">
+      <div class="trip-head__t">
+        <h1 class="t-label-s-m">개신나는 도쿄여행 · 1일차</h1>
+        <p class="t-caption c-ink-500">5.02 (토) · 시작한 지 6시간</p>
+      </div>
+      <span class="badge badge--primary">위치 공유 중</span>
+    </div>
+    <div class="phase" aria-label="여행 단계"><span class="phase__step is-done">여행 전</span><span class="phase__step" aria-current="step">여행 중</span><span class="phase__step">여행 후</span></div>
+  </section>
+
+  <section class="sheet" aria-label="다음 일정">
+    <span class="sheet__handle" aria-hidden="true"></span>
+    <a class="sheet__next" href="#" data-todo="B5">
+      <span class="t-caption-m c-mint">다음 일정 · 18:00 · 40분 뒤</span>
+      <span class="t-label-l">시부야 스크램블</span>
+      <span class="t-caption c-ink-500">관광지 · 도보 12분 · 1.2km</span>
+    </a>
+    <div class="sheet__actions">
+      <a class="btn btn--m btn--secondary" href="#" data-todo="B2">경로 보기</a>
+      <a class="btn btn--m btn--primary" href="#" data-todo="B3">기록 남기기</a>
+    </div>
+    <hr class="divider">
+    <div class="sheet__rows">
+      <div class="sec__head">
+        <h2 class="t-body-m">오늘 남은 일정</h2><span class="t-body-m c-mint">2</span>
+        <span class="t-caption c-ink-500" style="margin-left:auto">일행 3명 함께 있어요</span>
+      </div>
+      <div class="sheet__row"><span class="time">18:00</span><span class="name">시부야 스크램블</span><span class="badge badge--primary badge--solid">다음</span></div>
+      <div class="sheet__row"><span class="time">20:00</span><span class="name">숙소 체크인</span><span class="badge badge--primary">예정</span></div>
+    </div>
+    <div class="sheet__trip-actions">
+      <a class="btn btn--s btn--secondary" href="#" data-todo="B7">지출 기록</a>
+      <a class="btn btn--s btn--outline" href="#" data-todo="B6">1일차 마무리</a>
+      <a class="btn btn--s btn--ghost" href="k3.html">여행 종료 (마스터)</a>
+    </div>
+  </section>
+  <nav class="tabbar" aria-label="하단 탭">
+    <a class="tabbar__item" href="k2.html" aria-current="page"><span class="tabbar__box"><i data-lucide="house" class="icon"></i><span class="tabbar__label">홈</span></span></a>
+    <a class="tabbar__item" href="#" data-todo="D1"><span class="tabbar__box"><i data-lucide="luggage" class="icon"></i><span class="tabbar__label">내 여행</span></span></a>
+    <a class="tabbar__item" href="#" data-todo="D5"><span class="tabbar__box"><i data-lucide="compass" class="icon"></i><span class="tabbar__label">커뮤니티</span></span></a>
+    <a class="tabbar__item" href="#" data-todo="D2"><span class="tabbar__box"><i data-lucide="user" class="icon"></i><span class="tabbar__label">마이페이지</span></span></a>
+  </nav>
+</div>
+
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>

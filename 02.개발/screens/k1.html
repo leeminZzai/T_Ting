@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>메인 · 여행 전 · T-Ting</title>
+  <script src="../scripts/theme.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/screens.css">
+</head>
+<body class="app">
+<!-- K1 · 메인 · 여행 전 (준비 중) — Figma 101:28695 -->
+<div class="screen">
+  <header class="topbar">
+    <a class="logo" href="index.html" aria-label="T-Ting 화면 목록">T</a>
+    <span class="topbar__spacer"></span>
+    <a class="icon-btn" href="#" data-todo="G3" aria-label="알림, 읽지 않은 알림 있음"><i data-lucide="bell" class="icon"></i><span class="unread-dot"></span></a>
+  </header>
+  <main class="body">
+    <section class="trip-head" aria-label="가장 가까운 여행">
+      <div class="trip-head__title">
+        <div class="trip-head__t">
+          <h1 class="trip-head__name">개신나는 도쿄여행</h1>
+          <p class="t-caption c-ink-500">5.02 (토) – 5.06 (수) · 4박 5일 · 4명</p>
+        </div>
+        <span class="trip-head__dday">D-17</span>
+      </div>
+      <div class="phase" aria-label="여행 단계"><span class="phase__step" aria-current="step">여행 전</span><span class="phase__step">여행 중</span><span class="phase__step">여행 후</span></div>
+    </section>
+
+    <section class="card card--tint" aria-labelledby="k1-plan" style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center">
+        <h2 id="k1-plan" class="t-caption c-ink-700">계획 진행</h2>
+        <span class="t-label-l c-mint" style="margin-left:auto">60%</span>
+      </div>
+      <p class="t-label-s-m">5일 중 3일 일정이 채워졌어요</p>
+      <div class="gauge" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="계획 진행"><span class="gauge__fill" style="width:60%"></span></div>
+      <p class="t-caption c-ink-700">4·5일차 일정이 비어 있어요</p>
+      <a class="btn btn--m btn--primary btn--block" href="#" data-todo="A4">일정 이어서 짜기</a>
+    </section>
+
+    <section class="sec" aria-labelledby="k1-todo">
+      <div class="sec__head">
+        <h2 id="k1-todo" class="sec__title">확인할 일</h2><span class="sec__count">2</span>
+        <a class="sec__more" href="#" data-todo="G3">전체 보기</a>
+      </div>
+      <div class="list">
+        <a class="list__row" href="#" data-todo="A5">
+          <span class="num-box t-initial">4</span>
+          <span class="list__text"><span class="list__title">4·5일차 일정이 비어 있어요</span><span class="list__sub">일정을 추가하면 일행에게 바로 보여요</span></span>
+          <span class="list__action">추가</span>
+        </a>
+        <a class="list__row" href="#" data-todo="A5">
+          <span class="num-box t-initial">2</span>
+          <span class="list__text"><span class="list__title">시간 미정 일정 2개</span><span class="list__sub">2일차 · 오모테산도 산책 외 1곳</span></span>
+          <span class="list__action">정하기</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="k1-feed">
+      <div class="sec__head">
+        <h2 id="k1-feed" class="sec__title">일행 활동</h2>
+        <a class="sec__more" href="#" data-todo="G3">더 보기</a>
+      </div>
+      <div class="list">
+        <a class="list__row" href="#" data-todo="A6">
+          <span class="avatar t-initial">이</span>
+          <span class="list__text"><span class="list__title">이민주님이 2일차에 장소를 추가했어요</span><span class="list__sub">하라주쿠 다케시타 거리 · 10분 전</span></span>
+        </a>
+        <a class="list__row" href="#" data-todo="A6">
+          <span class="avatar t-initial">강</span>
+          <span class="list__text"><span class="list__title">강동진님이 코멘트를 남겼어요</span><span class="list__sub">“티켓은 미리 예매해 두기!” · 디즈니씨 · 1시간 전</span></span>
+        </a>
+        <a class="list__row" href="#" data-todo="A6">
+          <span class="avatar t-initial">최</span>
+          <span class="list__text"><span class="list__title">최민휘님이 초대를 수락했어요</span><span class="list__sub">어제</span></span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <nav class="tabbar" aria-label="하단 탭">
+    <a class="tabbar__item" href="k1.html" aria-current="page"><span class="tabbar__box"><i data-lucide="house" class="icon"></i><span class="tabbar__label">홈</span></span></a>
+    <a class="tabbar__item" href="#" data-todo="D1"><span class="tabbar__box"><i data-lucide="luggage" class="icon"></i><span class="tabbar__label">내 여행</span></span></a>
+    <a class="tabbar__item" href="#" data-todo="D5"><span class="tabbar__box"><i data-lucide="compass" class="icon"></i><span class="tabbar__label">커뮤니티</span></span></a>
+    <a class="tabbar__item" href="#" data-todo="D2"><span class="tabbar__box"><i data-lucide="user" class="icon"></i><span class="tabbar__label">마이페이지</span></span></a>
+  </nav>
+</div>
+
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>

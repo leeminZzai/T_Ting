@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>메인 · 여행 후 · T-Ting</title>
+  <script src="../scripts/theme.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/screens.css">
+</head>
+<body class="app">
+<!-- K3 · 메인 · 여행 후 (마무리) — Figma 101:28874 -->
+<div class="screen">
+  <header class="topbar">
+    <a class="logo" href="index.html" aria-label="T-Ting 화면 목록">T</a>
+    <span class="topbar__spacer"></span>
+    <a class="icon-btn" href="#" data-todo="G3" aria-label="알림, 읽지 않은 알림 있음"><i data-lucide="bell" class="icon"></i><span class="unread-dot"></span></a>
+  </header>
+  <main class="body">
+    <section class="trip-head" aria-label="마무리 중인 여행">
+      <div class="trip-head__title">
+        <div class="trip-head__t">
+          <h1 class="trip-head__name">개신나는 도쿄여행</h1>
+          <p class="t-caption c-ink-500">5.06 (수) 종료 · 4박 5일 · 4명</p>
+        </div>
+        <span class="badge">마무리 5일 남음</span>
+      </div>
+      <div class="phase" aria-label="여행 단계"><span class="phase__step is-done">여행 전</span><span class="phase__step is-done">여행 중</span><span class="phase__step" aria-current="step">여행 후</span></div>
+    </section>
+
+    <section class="list" aria-labelledby="k3-steps">
+      <div class="steps">
+        <div class="steps__head">
+          <h2 id="k3-steps" class="t-label-l">여행 마무리</h2>
+          <p class="t-caption c-ink-500">4단계 중 2단계 완료</p>
+        </div>
+        <div class="steps__row">
+          <span class="step-no is-done t-initial">✓</span>
+          <span class="list__text"><span class="list__title">여행 종료</span><span class="list__sub">5.06 (수) 마스터가 종료했어요</span></span>
+          
+        </div>
+        <div class="steps__row">
+          <span class="step-no is-done t-initial">✓</span>
+          <span class="list__text"><span class="list__title">기록 정리</span><span class="list__sub">동선 · 태그 · 감정이 정리됐어요</span></span>
+          <a class="btn btn--s btn--outline" href="#" data-todo="C4">보기</a>
+        </div>
+        <div class="steps__row">
+          <span class="step-no is-current t-initial">3</span>
+          <span class="list__text"><span class="list__title">후기 쓰기</span><span class="list__sub">일행 2/4명 작성 · 내 후기 대기 중</span></span>
+          <a class="btn btn--s btn--primary" href="#" data-todo="C2">후기 쓰기</a>
+        </div>
+        <div class="steps__row">
+          <span class="step-no  t-initial">4</span>
+          <span class="list__text"><span class="list__title">루트 공개 결정</span><span class="list__sub">마스터만 · 공개하면 크레딧 적립</span></span>
+          
+        </div>
+        <div style="height:8px"></div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="k3-recap">
+      <div class="sec__head">
+        <h2 id="k3-recap" class="sec__title">기록 정리 미리보기</h2>
+        <a class="sec__more" href="#" data-todo="C4">전체 보기</a>
+      </div>
+      <a class="list" href="#" data-todo="C4" style="display:block;color:inherit;text-decoration:none">
+        <div class="recap__cover">
+          <div class="avatars">
+            <span class="avatar avatar--master t-initial" style="border:0">김</span>
+            <span class="avatar t-initial" style="background:var(--surface)">이</span>
+            <span class="avatar t-initial" style="background:var(--mint-tint)">강</span>
+            <span class="avatar t-initial" style="background:var(--mint-glow)">최</span>
+          </div>
+          <p class="t-caption-m c-ink-700">김경팔 외 3명</p>
+        </div>
+        <div class="stats">
+          <div class="stats__item"><span class="stats__value">86km</span><span class="t-caption c-ink-500">이동 거리</span></div>
+          <div class="stats__item"><span class="stats__value">21곳</span><span class="t-caption c-ink-500">방문 장소</span></div>
+          <div class="stats__item"><span class="stats__value">34개</span><span class="t-caption c-ink-500">남긴 기록</span></div>
+        </div>
+      </a>
+    </section>
+
+    <section class="sec" aria-labelledby="k3-next">
+      <div class="sec__head"><h2 id="k3-next" class="sec__title">다음 여행</h2></div>
+      <div class="list">
+        <a class="list__row" href="#" data-todo="A4">
+          <span class="avatar t-initial">김</span>
+          <span class="list__text"><span class="list__title">고등학교 동창들과 캄보디아</span><span class="list__sub">6.05 – 6.09 · 4명 · 일정 20%</span></span>
+          <span class="badge">D-30</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <nav class="tabbar" aria-label="하단 탭">
+    <a class="tabbar__item" href="k3.html" aria-current="page"><span class="tabbar__box"><i data-lucide="house" class="icon"></i><span class="tabbar__label">홈</span></span></a>
+    <a class="tabbar__item" href="#" data-todo="D1"><span class="tabbar__box"><i data-lucide="luggage" class="icon"></i><span class="tabbar__label">내 여행</span></span></a>
+    <a class="tabbar__item" href="#" data-todo="D5"><span class="tabbar__box"><i data-lucide="compass" class="icon"></i><span class="tabbar__label">커뮤니티</span></span></a>
+    <a class="tabbar__item" href="#" data-todo="D2"><span class="tabbar__box"><i data-lucide="user" class="icon"></i><span class="tabbar__label">마이페이지</span></span></a>
+  </nav>
+</div>
+
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>

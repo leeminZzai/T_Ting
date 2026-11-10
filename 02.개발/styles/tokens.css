@@ -1,0 +1,111 @@
+/* T-Ting 디자인 토큰 — Crayon Light / Dark
+   출처: Figma [Tting] UI UX Design - Design System (v8yBQpJ9gZmCRnd9KRgVek), 2026-11-10 추출
+   문서: 프로젝트 문서 t-ting-디자인-시스템-v1-crayon.md §1~§3
+   테마 전환: <html data-theme="light|dark"> (scripts/theme.js가 시스템 설정을 기본값으로 적용) */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* 종이 · 면 · 선 */
+  --paper: #FFFFFF;           /* 앱 화면 배경 */
+  --surface: #FFFFFF;         /* 카드 · 시트 · 팝업 · 입력 면 */
+  --surface-raised: #FFFFFF;  /* 탭바 */
+  --sunken: #F4F6F6;          /* Neutral 배지 · 읽기 전용 · 검색 필드 */
+  --line: #E6EAE9;            /* 구분선 · 카드 테두리 */
+  --control-border: #8A9592;  /* 입력 · 체크 · 칩 · Outline 버튼 테두리 */
+
+  /* 잉크 (글자) — 900 → 400 순으로 중요도가 낮아짐 */
+  --ink-900: #1B1B1B;
+  --ink-700: #4B5452;
+  --ink-500: #646D6B;
+  --ink-400: #6E7775;
+  --disabled: #AEB5B3;
+  --disabled-fill: #EEF1F0;
+  --shimmer: #F8FAF9;
+  --on-primary: #1B1B1B;      /* 민트 · 옐로 면 위 글자 */
+
+  /* 민트 (브랜드) */
+  --mint-500: #7ACDB8;        /* Primary 면 */
+  --mint-600: #3B9780;        /* Primary 경계선 2px */
+  --mint-700: #1D6D5D;        /* 링크 · 틸 글자 · 입력 중 테두리 */
+  --mint-800: #1B554A;        /* 눌림 글자 · 체크 표시 */
+  --mint-press: #59C0A6;
+  --mint-tint: #F3FAF8;
+  --mint-tint-2: #E5F3EF;
+  --mint-glow: #D9EDE7;
+  --brand-teal: #14B8A6;      /* 로고 · 일러스트 전용, UI 면에 쓰지 않음 */
+
+  /* 상태 */
+  --yellow-400: #FFD43B; --yellow-deep: #7A5A00; --yellow-tint: #FFF8D6; --yellow-icon: #A87A00; --yellow-line: #FFE98A;
+  --success-400: #BADED3; --success-deep: #1D6D5D; --success-tint: #F3FAF8; --success-line: #E5F3EF;
+  --info-400: #DDE3E1; --info-deep: #4B5452; --info-500: #646D6B; --info-tint: #F4F6F6; --info-line: #E6EAE9;
+  --tomato-pastel: #FFD6DA; --tomato-press: #FFC2C8; --tomato-500: #D92D3F; --tomato-deep: #C42B3A; --tomato-tint: #FFEEF0;
+
+  --dim: rgba(0, 0, 0, .40);
+  --shadow-toast: 0 10px 12px rgba(27, 27, 27, .14);
+  --shadow-popup: 0 16px 20px rgba(27, 27, 27, .16);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #171C1A;
+  --surface: #171C1A;
+  --surface-raised: #1E2422;
+  --sunken: #232A28;
+  --line: #2F3734;
+  --control-border: #76817E;
+
+  --ink-900: #EEF2F1;
+  --ink-700: #BAC3C0;
+  --ink-500: #98A29F;
+  --ink-400: #8A9491;
+  --disabled: #59625F;
+  --disabled-fill: #262D2B;
+  --shimmer: #2C3432;
+  --on-primary: #141917;
+
+  --mint-500: #14B8A6;
+  --mint-600: #0D9F8F;
+  --mint-700: #8ED8C4;
+  --mint-800: #123A31;
+  --mint-press: #12A292;
+  --mint-tint: #1A2B26;
+  --mint-tint-2: #1F3730;
+  --mint-glow: #26443B;
+  --brand-teal: #14B8A6;
+
+  --yellow-400: #FFD43B; --yellow-deep: #F2CC4E; --yellow-tint: #33301A; --yellow-icon: #E0B43A; --yellow-line: #5C5124;
+  --success-400: #2E5A4D; --success-deep: #8ED8C4; --success-tint: #1A2B26; --success-line: #1F3730;
+  --info-400: #3A4340; --info-deep: #BAC3C0; --info-500: #98A29F; --info-tint: #232A28; --info-line: #2F3734;
+  --tomato-pastel: #4A2329; --tomato-press: #5A2A31; --tomato-500: #C8323F; --tomato-deep: #FF8A93; --tomato-tint: #3A1E22;
+}
+
+/* 크기 · 간격 · 반경 (테마 공통) */
+:root {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --font-hand: "EF_jejudoldam", var(--font-sans); /* 손글씨 제목. 웹폰트 라이선스 확인 전까지 대체 글꼴 */
+
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 28px; --space-7: 32px; --space-8: 36px;
+  --space-9: 40px; --space-10: 44px; --space-11: 48px;
+
+  --radius-xs: 6px;    /* 배지 · 체크박스 */
+  --radius-s: 8px;     /* Btn S */
+  --radius-m: 12px;    /* Btn M · 입력 · 알림 · Note */
+  --radius-l: 14px;    /* Btn L · 토스트 */
+  --radius-card: 16px; /* 카드 · 리스트 */
+  --radius-xl: 20px;   /* 팝업 · 강조 카드 */
+  --radius-sheet: 24px;
+  --radius-pill: 999px;
+
+  --screen-w: 393px;
+  --tap-min: 44px;
+  --statusbar-h: 54px;
+  --topnav-h: 56px;
+  --tabbar-h: 67px;
+  --home-indicator-h: 34px;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}

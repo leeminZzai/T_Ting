@@ -1,0 +1,56 @@
+# === OS ===
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# === 에디터 / IDE ===
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.sublime-workspace
+*.code-workspace
+
+# === 디자인 툴 임시/백업 파일 ===
+# 원본 파일(.ai, .psd)은 추적하되, 자동 생성되는 백업만 제외합니다.
+*.ai.bak
+*.psd.bak
+*~
+Adobe*Recovery/
+*.tmp
+*.temp
+
+# === 폰트 (라이선스 문제로 저장소에 올리지 않음) ===
+*.ttf
+*.otf
+*.woff
+*.woff2
+*.eot
+
+# === 빌드 산출물 / 의존성 ===
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+.next/
+out/
+
+# === 로그 / 환경변수 ===
+*.log
+npm-debug.log*
+yarn-error.log*
+.env
+.env.*
+!.env.example
+
+# === 압축 파일 ===
+*.zip
+*.7z
+*.rar

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>T-Ting 컴포넌트</title>
+  <script src="scripts/theme.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <style>
+    /* 미리보기 페이지 전용 레이아웃 */
+    .demo { max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+    .demo__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+    .demo__intro { color: var(--ink-500); margin-bottom: 32px; }
+    .demo section { padding: 28px 0; border-top: 1px solid var(--line); }
+    .demo h2 { margin-bottom: 4px; }
+    .demo .spec { color: var(--ink-500); margin-bottom: 16px; }
+    .row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .row__label { width: 88px; flex: none; color: var(--ink-500); }
+    .stack { display: grid; gap: 16px; max-width: 353px; }
+    .grid-2 { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+    .swatches { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .swatch { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+    .swatch__chip { height: 52px; }
+    .swatch__meta { padding: 8px 10px; }
+    .phone { width: 100%; max-width: 393px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--paper); }
+    .phone__body { padding: 16px; display: grid; justify-items: center; gap: 12px; background: var(--sunken); }
+    .popup-stage { display: flex; flex-wrap: wrap; gap: 16px; padding: 24px; background: var(--dim); border-radius: 16px; }
+    @media (max-width: 480px) { .row__label { width: 100%; } }
+  </style>
+</head>
+<body>
+<main class="demo">
+  <div class="demo__head">
+    <h1 class="t-section-title">T-Ting 컴포넌트</h1>
+    <button class="btn btn--s btn--outline" type="button" id="themeToggle">
+      <i data-lucide="moon" class="icon" style="width:14px;height:14px"></i><span>다크 모드</span>
+    </button>
+  </div>
+  <p class="t-body demo__intro">Crayon 디자인 시스템 v1 · Figma 컴포넌트 실제 값 기준 · 앱 기준이라 Hover 없이 눌림 상태만 있어요</p>
+
+  <!-- 색 -->
+  <section aria-labelledby="s-color">
+    <h2 id="s-color" class="t-label-l">색</h2>
+    <p class="t-caption spec">파스텔 면 위 글자는 잉크색 · 누르는 요소는 같은 계열 선 2px · 로고 틸은 UI 면에 쓰지 않음</p>
+    <div class="swatches" id="swatches"></div>
+  </section>
+
+  <!-- 타이포 -->
+  <section aria-labelledby="s-type">
+    <h2 id="s-type" class="t-label-l">글자</h2>
+    <p class="t-caption spec">Pretendard · 자간 0 · 16px 이하는 Regular, 강조는 Medium까지</p>
+    <div class="stack" style="max-width:none">
+      <p class="t-hand-heading">어떤 여행을 떠나시나요? <span class="t-caption c-ink-500">손글씨 24 (제주돌담체 자리)</span></p>
+      <p class="t-section-title">개신나는 도쿄여행 <span class="t-caption c-ink-500">Section Title 24 Bold</span></p>
+      <p class="t-label-l">디즈니씨 · 86km <span class="t-caption c-ink-500">Label L 20 Bold</span></p>
+      <p class="t-label-s-m">시부야 스카이 <span class="t-caption c-ink-500">Label S 16 Medium</span></p>
+      <p class="t-body c-ink-700">장소를 추가하면 일행 모두의 화면에 바로 반영돼요. <span class="t-caption c-ink-500">Body 14</span></p>
+      <p class="t-caption c-ink-500">5월 2일 (토) · 도보 4분 · 오늘 기록 9개 <span class="c-ink-400">Caption 12</span></p>
+      <p class="t-caption-s c-ink-500">홈 · 내 여행 · 커뮤니티 · 마이페이지 <span class="c-ink-400">Caption S 11</span></p>
+    </div>
+  </section>
+
+  <!-- 버튼 -->
+  <section aria-labelledby="s-btn">
+    <h2 id="s-btn" class="t-label-l">버튼</h2>
+    <p class="t-caption spec">S 32 · M 44 · L 52 · 눌러보면 Pressed 상태가 보여요 · Primary는 한 화면에 1개</p>
+    <div id="btnMatrix"></div>
+    <div class="row">
+      <span class="row__label t-caption">크기</span>
+      <button class="btn btn--s btn--primary">버튼 S</button>
+      <button class="btn btn--m btn--primary">버튼 M</button>
+      <button class="btn btn--l btn--primary">버튼 L</button>
+    </div>
+  </section>
+
+  <!-- 입력 -->
+  <section aria-labelledby="s-input">
+    <h2 id="s-input" class="t-label-l">입력</h2>
+    <p class="t-caption spec">M 44 · L 52 · 라벨은 항상 위에 · 오류는 색 + 아이콘 + 문구</p>
+    <div class="grid-2">
+      <label class="field">
+        <span class="field__label">여행 제목</span>
+        <input class="field__control" placeholder="입력해 주세요" maxlength="20">
+        <span class="field__helper">최대 20자</span>
+      </label>
+      <label class="field">
+        <span class="field__label">닉네임</span>
+        <input class="field__control" value="김경팔">
+        <span class="field__helper">사용할 수 있는 닉네임이에요</span>
+      </label>
+      <label class="field field--error">
+        <span class="field__label">비밀번호</span>
+        <input class="field__control" type="password" value="12345678" aria-invalid="true" aria-describedby="pwErr">
+        <span class="field__helper" id="pwErr"><i data-lucide="circle-alert" class="icon"></i>이메일 또는 비밀번호가 맞지 않아요</span>
+      </label>
+      <label class="field is-disabled">
+        <span class="field__label">이메일</span>
+        <input class="field__control" placeholder="입력할 수 없어요" disabled>
+        <span class="field__helper">안내 문구</span>
+      </label>
+      <label class="field field--l">
+        <span class="field__label">L 크기</span>
+        <input class="field__control" placeholder="입력해 주세요">
+      </label>
+      <div class="field">
+        <span class="field__label">여행 기간</span>
+        <button class="select-box" type="button"><i data-lucide="calendar" class="icon"></i>2026.05.02 – 05.06 · 4박 5일</button>
+      </div>
+      <label class="field" style="grid-column:1/-1;max-width:612px">
+        <span class="field__label">내용</span>
+        <textarea class="field__control" maxlength="300" placeholder="티켓은 미리 예매해두기!"></textarea>
+      </label>
+    </div>
+  </section>
+
+  <!-- 선택 -->
+  <section aria-labelledby="s-check">
+    <h2 id="s-check" class="t-label-l">체크박스 · 라디오 · 스위치</h2>
+    <p class="t-caption spec">탭 영역 높이 44 · 선택은 연한 민트 면 + 같은 계열 선 + 체크 모양으로 이중 표시</p>
+    <div class="row">
+      <label class="check"><input type="checkbox"><span class="check__box"></span>혼자 기록할게요</label>
+      <label class="check"><input type="checkbox" checked><span class="check__box"></span>자동 로그인</label>
+      <label class="check"><input type="checkbox" id="mixed"><span class="check__box"></span>전체 동의</label>
+      <label class="check"><input type="checkbox" disabled><span class="check__box"></span>비활성</label>
+      <label class="check"><input type="checkbox" checked disabled><span class="check__box"></span>비활성 선택</label>
+    </div>
+    <div class="row" role="radiogroup" aria-label="공개 범위">
+      <label class="check check--radio"><input type="radio" name="scope" checked><span class="check__box"></span>전체 공개</label>
+      <label class="check check--radio"><input type="radio" name="scope"><span class="check__box"></span>일행에게만 공개</label>
+      <label class="check check--radio"><input type="radio" name="scope"><span class="check__box"></span>공개하지 않기</label>
+      <label class="check check--radio"><input type="radio" name="scope2" disabled><span class="check__box"></span>비활성</label>
+    </div>
+    <div class="row">
+      <label class="switch"><input type="checkbox" role="switch" checked aria-label="위치 공유"><span class="switch__track"></span></label>
+      <label class="switch"><input type="checkbox" role="switch" aria-label="알림"><span class="switch__track"></span></label>
+      <label class="switch"><input type="checkbox" role="switch" checked disabled aria-label="비활성 켜짐"><span class="switch__track"></span></label>
+      <label class="switch"><input type="checkbox" role="switch" disabled aria-label="비활성 꺼짐"><span class="switch__track"></span></label>
+      <span class="t-caption c-ink-500">스위치 색은 Figma 자산 확인 전 근사값</span>
+    </div>
+  </section>
+
+  <!-- 칩 · 배지 -->
+  <section aria-labelledby="s-chip">
+    <h2 id="s-chip" class="t-label-l">칩 · 배지</h2>
+    <p class="t-caption spec">칩은 탭해서 고르는 것 (M 36 · S 28) · 배지는 읽기 전용 상태 표시 (높이 24, 한 카드 3개 이하)</p>
+    <div class="row chip-row" data-toggle-chips>
+      <button class="chip" aria-pressed="false">관광지</button>
+      <button class="chip" aria-pressed="true">맛집</button>
+      <button class="chip" aria-pressed="false">숙소</button>
+      <button class="chip" aria-pressed="false">기타</button>
+      <button class="chip" disabled>비활성</button>
+      <button class="chip" aria-pressed="false">이민주<span class="chip__close" aria-label="삭제"><i data-lucide="x" class="icon"></i></span></button>
+    </div>
+    <div class="row chip-row" data-toggle-chips>
+      <button class="chip chip--s" aria-pressed="true">1일차</button>
+      <button class="chip chip--s" aria-pressed="false">2일차</button>
+      <button class="chip chip--s" aria-pressed="false">3일차</button>
+      <button class="chip chip--s" aria-pressed="false">#카페</button>
+    </div>
+    <div id="badgeMatrix"></div>
+  </section>
+
+  <!-- 알림 -->
+  <section aria-labelledby="s-alert">
+    <h2 id="s-alert" class="t-label-l">알림 · 토스트 · 팝업</h2>
+    <p class="t-caption spec">Alert는 화면에 남는 안내 · Toast는 3~5초 뒤 사라지는 결과 · Popup은 결정을 요구할 때</p>
+    <div class="grid-2" id="alertGrid"></div>
+
+    <div class="row" style="margin-top:20px">
+      <div class="phone"><div class="phone__body">
+        <div class="toast" role="status"><i data-lucide="info" class="icon"></i><p class="toast__msg">변경 사항을 저장했어요</p></div>
+        <div class="toast toast--success" role="status"><i data-lucide="circle-check" class="icon"></i><p class="toast__msg">일정을 저장했어요</p></div>
+        <div class="toast toast--error" role="status"><i data-lucide="circle-alert" class="icon"></i><p class="toast__msg">일정을 삭제했어요</p><button class="toast__action" type="button">실행 취소</button></div>
+      </div></div>
+    </div>
+
+    <div class="popup-stage" style="margin-top:20px">
+      <div class="popup" role="dialog" aria-labelledby="p1t">
+        <p class="popup__title" id="p1t">초대는 4명까지예요</p>
+        <p class="popup__body">본인 포함 최대 4명까지 무료로 초대할 수 있어요.</p>
+        <div class="popup__actions"><button class="btn btn--m btn--primary">확인</button></div>
+      </div>
+      <div class="popup" role="dialog" aria-labelledby="p2t">
+        <p class="popup__title" id="p2t">이 일정을 저장할까요?</p>
+        <p class="popup__body">저장하면 함께하는 사람에게 바로 공유돼요.</p>
+        <div class="popup__actions"><button class="btn btn--m btn--outline">취소</button><button class="btn btn--m btn--primary">저장</button></div>
+      </div>
+      <div class="popup" role="alertdialog" aria-labelledby="p3t">
+        <p class="popup__title" id="p3t">여행을 삭제할까요?</p>
+        <p class="popup__body">삭제하면 되돌릴 수 없어요.</p>
+        <div class="popup__actions"><button class="btn btn--m btn--outline">유지하기</button><button class="btn btn--m btn--danger">여행 삭제</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 화면 조각 -->
+  <section aria-labelledby="s-parts">
+    <h2 id="s-parts" class="t-label-l">화면 공통 요소</h2>
+    <p class="t-caption spec">단계 표시 · 진행 세그먼트 · 아바타 · 카드 · 탭바 · 스켈레톤</p>
+    <div class="stack">
+      <div class="phase" aria-label="여행 단계">
+        <span class="phase__step is-done">여행 전</span>
+        <span class="phase__step" aria-current="step">여행 중</span>
+        <span class="phase__step">여행 후</span>
+      </div>
+      <div class="progress" aria-label="2단계 중 1단계"><span class="progress__seg is-on"></span><span class="progress__seg"></span></div>
+      <div class="row" style="margin:0">
+        <div class="avatars">
+          <span class="avatar avatar--master t-initial">김</span>
+          <span class="avatar t-initial">이</span>
+          <span class="avatar t-initial" style="background:var(--mint-tint)">강</span>
+          <span class="avatar avatar--guest t-initial">최</span>
+        </div>
+        <span class="t-caption c-ink-500">마스터 1 · 공동 편집자 2 · 일행 1</span>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="flex:1;display:grid;gap:6px">
+            <p class="t-label-s-m">디즈니씨</p>
+            <div style="display:flex;gap:6px;align-items:center"><span class="badge">관광지</span><span class="t-caption c-ink-500">코멘트 3</span></div>
+          </div>
+          <i data-lucide="chevron-right" class="icon c-ink-500"></i>
+        </div>
+      </div>
+      <div class="card--tint card">
+        <p class="t-caption c-ink-700">계획 진행</p>
+        <p class="t-label-s-m" style="margin:8px 0 12px">5일 중 3일 일정이 채워졌어요</p>
+        <button class="btn btn--m btn--primary btn--block">일정 이어서 짜기</button>
+      </div>
+      <div style="display:grid;gap:10px" aria-busy="true" aria-label="불러오는 중">
+        <span class="skel skel--heading"></span>
+        <span class="skel skel--line"></span>
+        <div style="display:flex;gap:10px"><span class="skel skel--avatar"></span><span class="skel skel--thumb"></span></div>
+      </div>
+    </div>
+    <div class="phone" style="margin-top:20px">
+      <nav class="tabbar" aria-label="하단 탭" id="tabbar">
+        <a class="tabbar__item" href="#" aria-current="page"><span class="tabbar__box"><i data-lucide="house" class="icon"></i><span class="tabbar__label">홈</span></span></a>
+        <a class="tabbar__item" href="#"><span class="tabbar__box"><i data-lucide="luggage" class="icon"></i><span class="tabbar__label">내 여행</span></span></a>
+        <a class="tabbar__item" href="#"><span class="tabbar__box"><i data-lucide="compass" class="icon"></i><span class="tabbar__label">커뮤니티</span></span></a>
+        <a class="tabbar__item" href="#"><span class="tabbar__box"><i data-lucide="user" class="icon"></i><span class="tabbar__label">마이페이지</span></span></a>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>
+  // ── 미리보기 데이터 생성 ──
+  var SWATCHES = [
+    ["--paper","Paper"],["--sunken","Sunken"],["--line","Line"],["--control-border","Control Border"],
+    ["--ink-900","Ink 900"],["--ink-700","Ink 700"],["--ink-500","Ink 500"],["--disabled","Disabled"],
+    ["--mint-500","Mint 500 · Primary"],["--mint-600","Mint 600"],["--mint-700","Mint 700"],["--mint-tint","Mint Tint"],
+    ["--yellow-400","Yellow 400"],["--yellow-tint","Yellow Tint"],["--success-400","Success 400"],["--info-400","Info 400"],
+    ["--tomato-pastel","Tomato Pastel"],["--tomato-500","Tomato 500"],["--tomato-deep","Tomato Deep"],["--brand-teal","Brand Teal (로고 전용)"]
+  ];
+  function renderSwatches() {
+    var css = getComputedStyle(document.documentElement);
+    document.getElementById("swatches").innerHTML = SWATCHES.map(function (s) {
+      return '<div class="swatch"><div class="swatch__chip" style="background:var(' + s[0] + ')"></div>' +
+        '<div class="swatch__meta"><p class="t-caption-m">' + s[1] + '</p><p class="t-caption c-ink-500">' +
+        css.getPropertyValue(s[0]).trim() + '</p></div></div>';
+    }).join("");
+  }
+
+  var TYPES = [["primary","Primary"],["secondary","Secondary"],["outline","Outline"],["ghost","Ghost"],["danger","Danger"]];
+  document.getElementById("btnMatrix").innerHTML = TYPES.map(function (t) {
+    var c = "btn btn--m btn--" + t[0];
+    return '<div class="row"><span class="row__label t-caption">' + t[1] + '</span>' +
+      '<button class="' + c + '">기본</button>' +
+      '<button class="' + c + ' is-pressed">눌림</button>' +
+      '<button class="' + c + ' is-loading" aria-busy="true">저장 중</button>' +
+      '<button class="' + c + '" disabled>비활성</button></div>';
+  }).join("");
+
+  var TONES = [["neutral","Neutral","초안"],["primary","Primary","D-17"],["info","Info","안내"],["yellow","Yellow","D-3"],["success","Success","완료"],["error","Error","작성 대기"]];
+  document.getElementById("badgeMatrix").innerHTML = ["","badge--solid","badge--outline"].map(function (st, i) {
+    return '<div class="row"><span class="row__label t-caption">' + ["Soft","Solid","Outline"][i] + '</span>' +
+      TONES.map(function (t) {
+        return '<span class="badge ' + (t[0] === "neutral" ? "" : "badge--" + t[0]) + ' ' + st + '">' +
+          (t[0] === "primary" || t[0] === "error" ? '<span class="badge__dot"></span>' : "") + t[2] + '</span>';
+      }).join("") + '</div>';
+  }).join("");
+
+  var ALERTS = [
+    ["info","info","알아두면 좋아요","멤버는 4명까지 초대할 수 있어요."],
+    ["success","circle-check","인증을 마쳤어요","tt***@gmail.com 계정의 비밀번호를 바꿀 수 있어요."],
+    ["warning","triangle-alert","오프라인 상태예요","연결되면 기록이 자동으로 올라가요."],
+    ["error","circle-alert","입력을 확인해 주세요","필수 항목 2개가 비어 있어요."]
+  ];
+  document.getElementById("alertGrid").innerHTML = ["", " alert--solid"].map(function (st) {
+    return ALERTS.map(function (a) {
+      return '<div class="alert alert--' + a[0] + st + '" role="status"><i data-lucide="' + a[1] + '" class="icon"></i>' +
+        '<div class="alert__text"><p class="alert__title">' + a[2] + '</p><p class="alert__body">' + a[3] + '</p></div></div>';
+    }).join("");
+  }).join("");
+
+  // ── 상호작용 ──
+  document.getElementById("mixed").indeterminate = true;
+  document.querySelectorAll("[data-toggle-chips] .chip:not(:disabled)").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      chip.setAttribute("aria-pressed", chip.getAttribute("aria-pressed") === "true" ? "false" : "true");
+    });
+  });
+  document.querySelectorAll("#tabbar .tabbar__item").forEach(function (item, _, all) {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      all.forEach(function (x) { x.removeAttribute("aria-current"); });
+      item.setAttribute("aria-current", "page");
+    });
+  });
+
+  var toggle = document.getElementById("themeToggle");
+  function syncToggle() {
+    var dark = TTingTheme.get() === "dark";
+    toggle.querySelector("span").textContent = dark ? "라이트 모드" : "다크 모드";
+    toggle.querySelector("[data-lucide], svg").setAttribute("data-lucide", dark ? "sun" : "moon");
+    renderSwatches();
+  }
+  toggle.addEventListener("click", function () {
+    TTingTheme.toggle();
+    toggle.innerHTML = '<i data-lucide="moon" class="icon" style="width:14px;height:14px"></i><span></span>';
+    syncToggle();
+    if (window.lucide) lucide.createIcons();
+  });
+
+  syncToggle();
+  if (window.lucide) lucide.createIcons();
+</script>
+</body>
+</html>
